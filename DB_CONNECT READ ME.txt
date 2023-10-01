@@ -1,0 +1,17 @@
+HOW TO SETUP db_connect.py
+Firstly, you will need to be using Mac or some Linux distro. These instructions focus on Linux
+
+1) run sudo apt install python3-dev default-libmysqlclient-dev build-essential
+2) run python3 -m pip install mysqlclient keyring
+3) OPTIONAL, if you've already configured the system keyring with your university login details then ignore steps 4-7 inclusive.
+4) type python3 
+5) type "import keyring"
+6) type keyring.set_password("database", "[university username]", "[webdash password"]) replacing the items in brackets with the info requested
+7) exit python console
+8) open db_connect.py. Replace the value of class variable __username with your username
+
+To use Google Distance API
+
+1) add the following key to your keyring with the ID and username being google API: AIzaSyCnunjgn3U7a0kwMEv-i-vi_86XjmKyE3o
+
+To use forms add a keyring entry for id "secret" and username "secret"

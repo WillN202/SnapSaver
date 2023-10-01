@@ -1,0 +1,192 @@
+.parent{
+  display: grid;
+  background-color: #DCDCDC;
+  font-family: Roboto;
+  height: 100vh;
+  grid-gap: 0.2em;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+  grid-template-rows: 0.3fr 5.0fr 2.4fr 3.0fr;
+  grid-template-areas: "nav nav nav nav nav"
+                       ". main main main ."
+                       ". FindProduct ScanBarcode ManageAccount ."
+                       "footer footer footer footer footer";
+}
+
+nav{
+  display: grid;
+  font-size: 27;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  grid-area: nav;
+  margin-top: -10px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;
+}
+
+.NavLink{
+  text-decoration: none;
+  text-align: center;
+  font-weight: 300;
+  color: black;
+  height: 90px;
+  line-height: 90px;
+  transition: all 0.2s;
+}
+
+.NavLink:hover{
+  background-color: #1B1B1B;
+  color: white;
+}
+
+main{
+  background-color: white;
+  position: relative;
+  grid-area: main;
+  overflow: hidden;
+}
+
+main>img{
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay{
+  position: absolute;
+  bottom: 0;
+  left: 100%;
+  right: 0;
+  background-color: #696969;
+  opacity: 80%;
+  overflow: hidden;
+  width: 0;
+  height: 100%;
+  transition: .5s ease;
+}
+
+main:hover .overlay{
+  width: 100%;
+  left: 0;
+}
+
+.text{
+  white-space: nowrap;
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+.FindProduct{
+  margin: 0.4em;
+  background-color: white;
+  position: relative;
+  grid-area: FindProduct;
+  overflow: hidden;
+}
+
+a>img{
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: scale-down;
+  object-position:  0px -110px;
+  background-size: cover;
+}
+
+.FindProduct:hover .overlay{
+  width: 100%;
+  left: 0;
+}
+
+.ScanBarcode{
+  margin: 0.4em;
+  background-color: white;
+  position: relative;
+  grid-area: ScanBarcode;
+  overflow: hidden;
+}
+
+.ScanBarcode:hover .overlay{
+  width: 100%;
+  left: 0;
+}
+
+.ManageAccount{
+  margin: 0.4em;
+  background-color: white;
+  position: relative;
+  grid-area: ManageAccount;
+  overflow: hidden;
+}
+
+.ManageAccount:hover .overlay{
+  width: 100%;
+  left: 0;
+}
+
+footer{
+  display: flex;
+  justify-content: flex-start;
+  background-color: #282828;
+  margin-top: 2em;
+  grid-area: footer;
+  color: white;
+}
+
+footer>img{
+  width: 11vw;
+  height: 23vh;
+}
+
+.footertext{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footertext>a{
+  color: white;
+}
+
+@media only screen and (max-width: 600px) {
+  .parent {
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.3fr 5.0fr 2.0fr 2.0fr 2.0fr 1.0fr;
+    grid-template-areas: "nav"
+                         "main"
+                         "FindProduct"
+                         "ScanBarcode"
+                         "ManageAccount"
+                         "footer"
+  }
+
+  .overlay {
+    width: 100%;
+    left: 0;
+  }
+
+  .NavLink{
+    text-decoration: none;
+    text-align: center;
+    font-weight: 300;
+    color: black;
+    height: 80px;
+    font-size: 12px;
+    line-height: 80px;
+    transition: all 0.2s;
+  }
+
+.NavLink:hover{
+    background-color: #1B1B1B;
+    color: white;
+}
+
+}

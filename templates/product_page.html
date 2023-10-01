@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Product Page</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='productpage.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='master.css') }}">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+</head>
+
+<body>
+	<!-- sticky nav	 -->
+	<nav>
+		<img src="{{ url_for('static' , filename='SnapSaver (No Background) Logo.png') }}" alt="SnapSaver Logo"
+			style="width:10vh; height:10vh;">
+		<a class=NavLink style="display:block" href="/">Home</a>
+		<a class=NavLink style="display:block" href="Products">Find Product</a>
+		<a class=NavLink style="display:block" href="Barcode">Enter Barcode</a>
+		<a class=NavLink style="display:block" href="/FAQ">About Y11</a>
+		<a class=NavLink style="display:block" href="/Profile">Profile</a>
+	</nav>
+	<a href="products">Return to products page</a>
+	<!-- Product card -->
+	<div id="whole">
+		{% for item in product_list %}
+		<div>
+			<div id="product">
+				<div class="product_card">
+					<table class="table">
+						<tr>
+							<th>Name:</th>
+							<td>{{ item.name }}</td>
+							<td></td>
+							<td><img src="{{ url_for('static, item.imglocation) }}" id="apple"></td>
+						</tr>
+						<tr>
+							<th>Current Price: </th>
+							{% if item.Aldi != "None" %}
+							<td>Aldi</td>
+							{% endif %}
+							{% if item.Lidl != "None" %}
+							<td>Lidl</td>
+							{% endif %}
+							{% if item.Tesco != "None" %}
+							<td>Tesco</td>
+							{% endif %}
+							{% if item.Morrison != "None" %}
+							<td>Morrisons</td>
+							{% endif %}
+							{% if item.Asda != "None" %}
+							<td>Asda</td>
+							{% endif %}
+							{% if item.Sainsbury != "None" %}
+							<td>Sainsbury's</td>
+							{% endif %}
+
+						</tr>
+						<tr>
+							<th></th>
+							{% if item.Aldi != "None" %}
+							<td>{{ item.Aldi }} </td>
+							{% endif %}
+							{% if item.Lidl != "None" %}
+							<td>{{ item.Lidl }}</td>
+							{% endif %}
+							{% if item.Tesco != "None" %}
+							<td>{{ item.Tesco }}</td>
+							{% endif %}
+							{% if item.Morrison != "None" %}
+							<td>{{ item.Morrison }}</td>
+							{% endif %}
+							{% if item.Asda != "None" %}
+							<td>{{ item.Asda }}</td>
+							{% endif %}
+							{% if item.Sainsbury != "None" %}
+							<td>{{ item.Sainsbury }}</td>
+							{% endif %}
+						</tr>
+					</table>
+				</div>
+			</div>
+			<div class="appear">
+				<p class="chart">here comes the price line chart</p>
+			</div>
+		</div>
+		{% endfor %}
+
+
+
+		<!-- <div class="product"> -->
+		<!-- <div class="product_card">
+				<table class="table">
+					<tr>
+						<th>Name:</th>
+						<td>Apple</td>
+						<td></td>
+						<td><img src="apple.jpg" id="apple"></td>
+					</tr>
+					<tr>
+						<th>Current Price: </th>
+						<td>Lidl</td>
+						<td>Tesco</td>
+						<td>Morrisons</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>$</td>
+						<td>$</td>
+						<td>$</td>
+					</tr>
+				</table>
+			</div>
+			<div class="appear">
+				<p class="chart">here comes the price line chart</p>
+			</div>
+		</div>
+
+
+
+		<div class="product">
+			<div class="product_card">
+				<table class="table">
+					<tr>
+						<th>Name:</th>
+						<td>Apple</td>
+						<td></td>
+						<td><img src="apple.jpg" id="apple"></td>
+					</tr>
+					<tr>
+						<th>Current Price: </th>
+						<td>Lidl</td>
+						<td>Tesco</td>
+						<td>Morrisons</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>$</td>
+						<td>$</td>
+						<td>$</td>
+					</tr>
+				</table>
+			</div>
+			<div class="appear">
+				<p class="chart">here comes the price line chart</p>
+			</div>
+		</div>
+
+
+
+		<div class="product">
+			<div class="product_card">
+				<table class="table">
+					<tr>
+						<th>Name:</th>
+						<td>Apple</td>
+						<td></td>
+						<td><img src="apple.jpg" id="apple"></td>
+					</tr>
+					<tr>
+						<th>Current Price: </th>
+						<td>Lidl</td>
+						<td>Tesco</td>
+						<td>Morrisons</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>$</td>
+						<td>$</td>
+						<td>$</td>
+					</tr>
+				</table>
+			</div>
+			<div class="appear">
+				<p class="chart">here comes the price line chart</p>
+			</div>
+
+		</div> -->
+
+		<!-- Other products have the same template -->
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Product not found</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='master.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='addproduct.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+</head>
+
+<body>
+    <div class="parent">
+        {% include 'navigation.html' %}
+
+        <div class="header">
+            <div class="text" id="header_text">
+                <h2 class="header_text">Help keep SnapSaver up to date by entering some details below</h2>
+            </div>
+        </div>
+        {% if product_info[0] %}
+        <form method="POST" action="/addwithapi" enctype="multipart/form-data">
+            {% else %}
+            <form method="POST" action="/addwithoutapi" enctype="multipart/form-data">
+                {% endif %}
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="hidden" name="ean" value="{{ ean }}" required>
+                <label for="name">Product Name</label>
+                <input type="text" name="name" value="{{ product_info[0] }}" required>
+                {% if product_info[1] %}
+                <input type="hidden" name="image" value="{{ product_info[1] }}">
+                {% else %}
+                <label for="image">Product Image</label>
+                <input type="file" name="image" class="imageinput" required>
+                {% endif %}
+                <label for="category">Product Category</label>
+                <select name="category" required>
+                    <option value="" style:"display:none"></option>
+                    <option value="DEC">Dairy, Eggs and Chilled</option>
+                    <option value="meatfish">Meat & Fish</option>
+                    <option value="frozen">Frozen</option>
+                    <option value="beverage">Beverages & Alcohol</option>
+                    <option value="cupboard">Food Cupboard</option>
+                    <option value="bakery">Bakery</option>
+                </select>
+                <label for="store">Store</label>
+                <select name="store" required>
+                    <option value="" style:"display:none"></option>
+                    {% for store in stores_list %}
+                    <option value="{{ store[0] }}">{{ store[0] }}</option>
+                    {% endfor %}
+                </select>
+                <label for="price" required>Price</label>
+                <input type="text" name="price">
+                <input type="submit" value="Submit" class="submitbut">
+            </form>
+
+            {% include 'footer.html' %}
+    </div>
+
+</body>
+
+</html>

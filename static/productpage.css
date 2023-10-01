@@ -1,0 +1,266 @@
+nav{
+    display: grid;
+    font-size: 27;
+    grid-template-columns: repeat(6, 1fr);
+    background-color: white;
+    grid-area: nav;
+    margin-top: -10px;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 9999;
+}
+
+.NavLink{
+    text-decoration: none;
+    text-align: center;
+    font-weight: 300;
+    color: black;
+    height: 90px;
+    line-height: 90px;
+    transition: all 0.2s;
+}
+
+.NavLink:hover{
+    background-color: #1B1B1B;
+    color: white;
+}
+
+body {
+    background-color:#DCDCDC;
+    font-family: Roboto;
+}
+
+/* @keyframes anima {
+    0% {top: 0px;}
+    10%{top:-50px;}
+    20%{top:0px}
+    30%{top:-40px}
+    40%{top: 0px;}
+    50%{top: -30px;}
+    100% {top:0px;}
+}
+   */
+
+
+
+#product0 {
+    position: relative;
+    margin-top: 150px;
+    z-index: 2;
+}
+
+#whole {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+
+.product {
+    position: relative;
+    margin-top: -30px;
+    text-align: center;
+    z-index: 2;
+}
+
+.product_card {
+    position: relative;
+    background-color: white;
+    font-family: Roboto;
+    font-size: 50px;
+    padding: 30px;
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 20px #a7a6a6;
+    z-index: 2;
+    animation: anima 4s ease 1s;
+    animation-fill-mode: forwards;
+}
+
+.product_card>a {
+  color: black;
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.table{
+    position: relative;
+    font-size: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+}
+
+#apple{
+    width: 430px;
+    height: 400px;
+}
+
+td{
+    padding: 20px;
+}
+
+td>img{
+    width: 180px;
+    height: 180px;
+}
+
+
+.appear {
+        position: relative;
+        top:-200px;
+        z-index: 1;
+        /* top: 600px; */
+        text-align: center;
+        vertical-align: middle;
+        width: 68%;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 30px;
+        background-color: #bebebe;
+        height: 240px;
+        transition: all .5s ease;
+        }
+
+.appear:hover {
+        height: 400px;
+}
+
+.chart{
+    font-size: 30px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#plot {
+    width: 400px;
+    height: 100px;
+    transition: all .5s ease;
+}
+
+.chart {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 190px;
+    padding-top: -100px;
+    transition: all .5s ease;
+}
+
+.appear:hover .chart{
+    padding-top: 250px;
+    height: 200px;
+}
+
+#nav {
+    width: 100%;
+    background-color: white;
+    position: fixed;
+    font-family: Roboto;
+    top:0px;
+    left: 0px;
+    height: 50px;
+    /* box-shadow: 5px 5px 6px 5px #c7cdcf; */
+    padding-top: 15px;
+    padding-bottom: 5px;
+    z-index: 5;}
+
+#Back {
+    font-size: 25px;
+    width: 10%;
+    padding-left: 30px;
+    color: #000000;
+    text-decoration: none;
+}
+
+#Back:hover {
+    color: white;
+}
+
+footer{
+    display: flex;
+    justify-content: flex-start;
+    background-color: #282828;
+    margin-top: 2em;
+    grid-area: footer;
+    color: white;
+  }
+
+  footer>img{
+    width: 11vw;
+    height: 23vh;
+  }
+
+  .footertext{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .footertext>a{
+    color: white;
+  }
+
+
+select {
+    width:175px;
+    height:48px;
+    font-size:20px;
+    padding-top: 5px;
+}
+
+option {
+    font-size:20px;
+}
+
+.submitbut {
+    width:200px;
+    height:50px;
+    font-size:25px;
+}
+
+.submitbut:hover {
+    background-color: lightgreen;
+}
+
+  @media only screen and (max-width: 600px){
+
+    .appear{
+        height: 500px;
+    }
+
+    .chart{
+        padding-top: 250px;
+        height: 200px;
+    }
+    .product_card{
+        padding: 10px;
+    }
+    .product{
+        font-size: 20px;
+        width: 350px;
+    }
+    .table{
+        font-size: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+        width: 350px;
+    }
+    td {
+        padding: 10px;
+    }
+    .product_card{
+        font-size: 20px;
+        padding: 10px;
+        width: 350px;
+    }
+}

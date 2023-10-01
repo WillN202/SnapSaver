@@ -1,0 +1,210 @@
+.parent{
+    height:300vh;
+    
+    grid-template-rows: 0.3fr 3.0fr 2.3fr 2.3fr  3.0fr 2.3fr 3.0fr 2.3fr 1.0fr;
+    grid-template-areas: "nav nav nav nav nav"
+                         ". hd hd hd ."
+                         ". paratext paratext paratext ."
+                         ". hd2 hd2 hd2 ."
+                         ". list1 list1 list1 ."
+                         ". hd3 hd3 hd3 ."
+                         ". q1 q1 q1 ."
+                         ". q2 q2 q2 ."
+                         "footer footer footer footer footer";                       
+  }
+
+.text {
+    left:45%;
+    min-width: 70%;
+}
+  
+.header {
+    grid-area: hd;
+    position: relative;
+    overflow: hidden;
+    /* border-left: 2px solid black;
+    border-right: 2px solid black; */
+    background-color: white;
+    margin-bottom: -20px;
+    margin-top:50px;
+    
+}
+
+.paragraph {
+    grid-area: paratext;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: -20px;
+    
+}
+
+.paragraph_text {
+    font-size: 28px;
+    text-align: center;
+    white-space: normal;
+    margin-left:150px;
+    color: black;
+}
+
+.header2 {
+    grid-area: hd2;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: -20px;
+}
+
+.list1 {
+    grid-area: list1;
+    position: relative;
+    overflow: hidden;
+    /* left:75px; */
+    background-color:white;
+    margin-bottom: -20px;
+}
+
+.list1 img {
+    margin: auto 5px;
+    float: left;
+    margin-right: 100px;
+    position: absolute;
+    left:200px;
+}
+
+.List {
+    font-size: 30px;
+    padding-top: 40px;
+    padding-left:100px;
+    color: black;
+    left:50px;
+}
+
+.test {
+    text-align: center;
+}
+
+
+.header3 {
+    grid-area: hd3;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: -20px;
+}
+
+#header_text {
+    text-align: center;
+    left:50%;
+    color:black;
+}
+
+.q1 {
+    grid-area: q1;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: -20px;
+    background-color:white;
+}
+
+.q1 img, .q2 img {
+    margin: auto 5px;
+    float: left;
+    margin-right: 50px;
+    padding-top: 7px;
+    position:relative;
+}
+
+.q2  {
+    grid-area: q2;
+    position: relative;
+    overflow: hidden;
+    background-color: white;
+    margin-bottom: 30px;
+}
+
+.question {
+    font-weight: bold;
+    font-size:45px;
+    width: 100%;
+    color: black;
+}
+
+.answer {
+    white-space: normal;
+    padding-top: 28px;
+    font-size: 26px;
+    color: black;
+}
+
+@media only screen and (max-width: 600px) {
+    .parent {
+      grid-template-columns: 1fr;
+      grid-template-rows: 0.3fr 3.0fr 2.3fr 2.3fr  3.0fr 2.3fr 3.0fr 2.3fr 1.0fr;
+      grid-template-areas: "nav"
+                           "hd"
+                           "paratext"
+                           "hd2"
+                           "list1"
+                           "hd3"
+                           "q1"
+                           "q2"
+                           "footer"
+    }
+  
+    .overlay {
+      width: 100%;
+      left: 0;
+    }
+
+    .text{
+        white-space: nowrap;
+        color: white;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+      }
+
+    .paragraph_text {
+        font-size: 15px;
+        margin-left: 40px;
+    }
+    
+    #header_text {
+        left:50%;
+        font-size: 18px;
+    }
+
+    .question {
+        font-weight: bold;
+        text-align: left;
+        font-size:16px;
+        width: 100%;
+    }
+
+    .answer {
+        white-space: normal;
+        text-align: left;
+        padding-top: 28px;
+        font-size: 12px;
+    }
+
+    .list1 img {
+        left:20px;
+    }
+
+    .List {
+        font-size: 22px;
+    }
+
+    .test {
+        text-align: left;
+        left:50px;
+        margin-left:30px;
+    }
+ 
+    .q1 img, .q2 img {
+        padding-top:0px;
+        top: -5px;
+    }
+  }

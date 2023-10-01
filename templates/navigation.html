@@ -1,0 +1,13 @@
+<nav>
+  <img src="{{ url_for('static', filename='SnapSaver (No Background) Logo.png') }}" alt="SnapSaver Logo"
+    style="width:10vh; height:10vh;">
+  <a class=NavLink style="display:block" href="/">Home</a>
+  <a class=NavLink style="display:block" href="/Search">Find Product</a>
+  <a class=NavLink style="display:block" href="/Barcode">Enter Barcode</a>
+  <a class=NavLink style="display:block" href="/FAQ">About Y11</a>
+  {% if current_user.is_authenticated %}
+  <a class=NavLink style="display:block" href="/Profile">Profile</a>
+  {% else %}
+  <a class=NavLink style="display:block" href="/Login">Login</a>
+  {% endif %}
+</nav>

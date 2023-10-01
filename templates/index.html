@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>SnapSaver Y11 Team Project</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='master.css') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+</head>
+
+<body>
+  <div class="parent">
+    {% include 'navigation.html' %}
+
+    <main>
+      <img src="{{ url_for('static', filename='Banner.jpeg') }}" alt="Avatar" class="image">
+      <div class="overlay">
+        <div class="text">Y11 SnapSaver Project</div>
+      </div>
+    </main>
+
+
+    <div class="FindProduct">
+      <a href="Search">
+        <img src="{{ url_for('static', filename='FindProduct.jpg') }}" alt="NaN">
+        <div class="overlay">
+          <div class="text">Find Product</div>
+        </div>
+      </a>
+    </div>
+
+    <div class="ScanBarcode">
+      <a href="Barcode">
+        <img src="{{ url_for('static', filename='ScanBarcode.jpg') }}" alt="NaN">
+        <div class="overlay">
+          <div class="text">Scan a Barcode</div>
+        </div>
+      </a>
+    </div>
+    {% if current_user.is_authenticated %}
+    <div class="ManageAccount">
+      <a href="shoppinglist">
+        <img src="{{ url_for('static', filename='Manage.jpg') }}" alt="NaN">
+        <div class="overlay">
+          <div class="text">Manage Shopping Lists</div>
+        </div>
+      </a>
+    </div>
+    {% else %}
+    <div class="ManageAccount">
+      <a href="Register">
+        <img src="{{ url_for('static', filename='Manage.jpg') }}" alt="NaN">
+        <div class="overlay">
+          <div class="text">Register</div>
+        </div>
+      </a>
+    </div>
+    {% endif %}
+
+    {% include 'footer.html' %}
+
+  </div>
+
+</body>
+
+</html>

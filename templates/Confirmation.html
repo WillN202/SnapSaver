@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+	<head>
+	    <meta charset="utf-8">
+	    <title>Confirmation</title>
+	    <link rel="stylesheet" href="{{ url_for('static', filename='Confirmation.css') }}">
+	    <link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	</head>
+
+	<body>
+		<div class="parent">
+	    	{% include 'navigation.html' %}
+
+
+			<div class="product_card">
+				<table class="table">
+					<tr>
+						<th>Name:</th>
+						<td>Apple</td>
+						<td></td>
+						<td><img src="{{ url_for('static', filename='Product_page2_apple.jpg') }}" id="apple"></td>
+					</tr>
+					<tr>
+						<th>Current Price: </th>
+						<td>Lidl</td>
+						<td>Tesco</td>
+						<td>Morrisons</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>$</td>
+						<td>$</td>
+						<td>$</td>
+					</tr>
+				</table>
+			</div>
+
+
+			<div class="buttons">
+				<p>Is that what you want?</p>
+
+				<button class="btn-hover color-1" onclick="location='Barcode.html'">Search Again</button>
+
+				<button class="btn-hover color-1" onclick="location='#Product'">See Products</button>
+
+
+			</div>
+
+			<div class="Confirmation">
+				<img class="Confirmation" src="{{ url_for('static', filename='Confirmation.jfif') }}">
+			</div>
+
+			{% include 'footer.html' %}
+
+		</div>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Profile</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='Profile.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+</head>
+
+<body>
+	<div class="parent">
+		{% include 'navigation.html' %}
+		
+		
+
+		<div class="info_table">
+			<table class="table">
+				<tr>
+					<th>Username:</th>
+					<td>{{ current_user.name }}</td>
+				</tr>
+				<tr>
+					<th>Registered E-mail:</th>
+					<td>{{ current_user.email }}</td>
+				</tr>
+				<tr>
+					<th>Postcode:</th>
+					<td>{{ current_user.postcode }}</td>
+				</tr>
+			</table>
+			<p> Change one or more details below : </p>
+
+			<div class="form_div">
+				<form method="POST">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<label>Change Name</label>
+					<input type="text" name="name" size=80>
+					<input class="button" type="submit" value="Change!">
+				</form>
+			</div>
+
+			<div class="form_div">
+				<form method="POST">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<label>Change Email</label>
+					<input type="email" name="email" size=80>
+					<input class="button" type="submit" value="Change!">
+				</form>
+			</div>
+
+			<div class="form_div">
+				<form method="POST">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<label>Change Postcode</label>
+					<input type="text" name="postcode" size=80>
+					<input class="button" type="submit" value="Change!">
+				</form>
+			</div>
+
+			<div class="form_div">
+				<form method="POST">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<label>Change Password</label>
+					<input type="password" name="pass1" size=30>
+					<label> Re-Enter Password</label>
+					<input type="password" name="pass2" size=30>
+					<input class="button" type="submit" value="Change!">
+				</form>
+			</div>
+
+			<div class="button_div">
+				<a class="BottomLink" href="logout">Logout</a>
+				<a class="BottomLink" href="#">View Shopping Lists</a>
+				<a class="BottomLink" href="#">Create Shopping List</a>
+			</div>
+		</div>
+	</div>
+
+	{% include 'footer.html' %}
+	
+
+	</div>
+
+</body>
+
+</html>

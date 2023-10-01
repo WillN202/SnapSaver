@@ -1,0 +1,312 @@
+.parent{
+  display: grid;
+  background-color: #DCDCDC;
+  font-family: Roboto;
+  height: 150vh;
+  grid-gap: 0.2em;
+  grid-template-columns: 0.5fr 1fr 0.1fr 1fr 0.5fr;
+  grid-template-rows: 0.2fr 0.75fr 0.4fr;
+  grid-template-areas: "nav nav nav nav nav"
+                       ". scan . input ."
+                       "footer footer footer footer footer";
+}
+
+nav{
+  display: grid;
+  font-size: 27;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  grid-area: nav;
+  margin-top: -10px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;
+}
+
+img{
+  object-fit: cover;
+  width: 100%;
+}
+
+.normal {
+  width: 100%;
+}
+
+.NavLink{
+  text-decoration: none;
+  text-align: center;
+  font-weight: 300;
+  color: black;
+  height: 90px;
+  line-height: 90px;
+  transition: all 0.2s;
+}
+
+.NavLink:hover{
+  background-color: #1B1B1B;
+  color: white;
+}
+
+
+.text{
+  white-space: nowrap;
+  color: white;
+  font-size: 40px;
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+form{
+    margin:0px;
+    padding:0px;
+}
+
+.scanbarcode{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  grid-area: scan;
+  background-color: white;
+  background-image: url('ScanBackground.jfif');
+
+}
+
+.inputbarcode{
+  grid-area: input;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: white;
+  background-image: url('keyboard.jpg');
+}
+
+footer {
+  grid-area: footer;
+  background-color: #282828;
+}
+
+.btn {
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  justify-content: center;
+  background: #FFF;
+  font-size: 30px;
+  font-weight: 50;
+  line-height: 100px;
+  max-width: 300px;
+  position: absolute;
+  text-decoration: none;
+  text-transform: uppercase;
+  width: 100%;
+}
+.btn:hover {
+  text-decoration: none;
+}
+
+/*btn_background*/
+.effect04 {
+  --uismLinkDisplay: var(--smLinkDisplay, inline-flex);
+  display: var(--uismLinkDisplay);
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  outline: solid  2px #000;
+  position: relative;
+  transition-duration: 0.4s;
+  overflow: hidden;
+}
+
+.effect04::before,
+.effect04 span{
+    margin: 0 auto;
+  transition-timing-function: cubic-bezier(0.86, 0, 0.07, 1);
+  transition-duration: 0.4s;
+}
+
+.effect04:hover{
+
+  background-color: #00FF7F;
+}
+
+.effect04:hover span{
+  -webkit-transform: translateY(-400%) scale(-0.1,20);
+          transform: translateY(-400%) scale(-0.1,20);
+}
+
+.effect04::before{
+  content: attr(data-sm-link-text);
+  color: #000;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  -webkit-transform: translateY(500%) scale(-0.1,20);
+          transform: translateY(500%) scale(-0.1,20);
+}
+
+
+.effect04:hover::before{
+  letter-spacing: 0.05em;
+  -webkit-transform: translateY(0) scale(1,1);
+          transform: translateY(0) scale(1,1);
+}
+
+.group        {
+  position:relative;
+  margin-top: 25px;
+}
+input         {
+  font-size:30px;
+  padding:10px 10px 10px 10px;
+  text-align: center;
+  display:block;
+  width:350px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color:#999;
+  font-size:30px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:10px;
+  top:10px;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label    {
+  top:-20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:absolute; display:block; width:370px; }
+.bar:before, .bar:after   {
+  content:'';
+  height:2px;
+  width:0;
+  bottom:1px;
+  position:absolute;
+  background:#5264AE;
+  transition:0.2s ease all;
+  -moz-transition:0.2s ease all;
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height:60%;
+  width:100px;
+  top:25%;
+  left:0;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+
+footer{
+  display: flex;
+  justify-content: flex-start;
+  background-color: #282828;
+  margin-top: 2em;
+  grid-area: footer;
+  color: white;
+}
+
+footer>img{
+  width: 11vw;
+  height: 23vh;
+}
+
+.footertext{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footertext>a{
+  color: white;
+}
+
+
+@media only screen and max-width: 1000px){
+  .parent{
+    display: grid;
+    background-color: #DCDCDC;
+    font-family: Roboto;
+    height: 100vh;
+    grid-gap: 0.2em;
+    grid-template-columns: 1fr;
+    grid-template-rows: 0.1fr 2fr 2fr 0.9fr;
+    grid-template-areas: "nav"
+                         "scan"
+                         "input"
+                         "footer";
+  }
+
+  nav{
+    display: grid;
+    font-size: 27;
+    height: 200px;
+    grid-template-columns: repeat(6, 0.7fr);
+    background-color: white;
+    grid-area: nav;
+  }
+
+  .NavLink{
+    text-decoration: none;
+    text-align: center;
+    font-weight: 300;
+    color: black;
+    height: 190px;
+    line-height: 190px;
+    transition: all 0.2s;
+  }
+}

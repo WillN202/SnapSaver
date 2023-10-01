@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Product Page</title>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='productpage.css') }}">
+	<!-- <link rel="stylesheet" href="../static/productpage.css"> -->
+	<style type="text/css">
+		#product0 {
+			margin-top: 250px;
+		}
+	</style>
+	<!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript">
+			google.charts.load('current', { 'packages': ['corechart'] });
+			google.charts.setOnLoadCallback(drawChart);
+
+			function drawChart() {
+					var data = google.visualization.arrayToDataTable([
+							['Date', 'Price'],
+							['00/00/00', 1000],
+							['00/00/00', 1170],
+							['00/00/00', 660],
+					]);
+
+					var options = {
+							title: 'Price History',
+							hAxis: { title: 'Time', titleTextStyle: { color: '#333' } },
+							vAxis: { minValue: 0},
+							width: 400
+					};
+
+					var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+					var chart4 = new google.visualization.AreaChart(document.getElementById('chart_div4'));
+
+					var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+					var chart4 = new google.visualization.AreaChart(document.getElementById('chart_div4'));
+
+					chart.draw(data, options);
+					chart4.draw(data, options);
+
+
+			}
+
+	</script> -->
+</head>
+
+<body>
+	{% include 'navigation.html' %}
+
+
+	<!-- Product card -->
+	<div>
+		<div id="product0">
+			<div class="product_card">
+				<table class="table">
+					<tr>
+						<th>Name:</th>
+						<td>{{ product }}</td>
+						<td></td>
+						<td><img src="{{ url_for('static', filename=img) }}" id="apple"></td>
+					</tr>
+					<tr>
+						<th>Current Price: </th>
+
+						<td><a href="{{ store_prices[0].link }}">{{
+								store_prices[0].name }}</a>
+						</td>
+						{% if no_item > 1 %}
+						<td><a href="{{ store_prices[1].link }}">{{
+								store_prices[1].name }}</a>
+						</td>
+						{% endif %}
+						{% if no_item > 2 %}
+						<td><a href="{{ store_prices[2].link }}">{{
+								store_prices[2].name }}</a>
+						</td>
+						{% endif %}
+					</tr>
+					<tr>
+						<th></th>
+						<td>{{ store_prices[0].price }}</td>
+						{% if no_item > 1 %}
+						<td>{{ store_prices[1].price }}</td>
+						{% endif %}
+						{% if no_item > 2 %}
+						<td>{{ store_prices[2].price }}</td>
+						{% endif %}
+					</tr>
+				</table>
+				<form class="form" method="POST" action="/addtolist">
+					<select name="category" required>
+						<option style="display:none" value=""></option>
+						{% for store in shopping_lists %}
+						<option value="{{ store[0] }}">{{ store[0] }}</option>
+						{% endfor %}
+					</select>
+					<input type="hidden" name="ean" value="{{ ean }}">
+					<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+					<input type="submit" value="Add to shopping list" class="submitbut">
+				</form>
+
+				<!-- <a href="ShoppingList/WillN202?action=add&EAN=10256233">+ Shopping List</a> -->
+				<!-- <a href="#">Update Product information</a> -->
+			</div>
+		</div>
+		<div class="appear">
+		</div>
+
+		{% include 'footer.html' %}
+	</div>
+</body>
+
+</html>

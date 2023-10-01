@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Scan a Barcode</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='BarcodePage.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+</head>
+
+<body>
+	<div class="parent">
+		{% include 'navigation.html' %}
+
+		<div class="scanbarcode">
+			<input type="button" name="" value="Scan Barcode" class="btn effect04"
+				onclick="document.getElementById('camera').click();">
+
+			<input type="file" name="image" accept="image/*" capture="environment" id="camera" style="display:none;">
+
+			<form method="POST" enctype="multipart/form-data">
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+				<input id="pic" type="submit" value="Confirm" class="btn effect04" data-sm-link-text="GO!!"><label
+					for="pic"></label>
+			</form>
+		</div>
+
+
+		<div class="inputbarcode">
+			<div class="group">
+				<label for="text">Manually Enter Barcode</label>
+				<form method="post" enctype="multipart/form-data">
+					<input id="text" name="bartext" type="text">
+				</form>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				{% if error==2 %}
+				<label class="normal" style="color:red">Sorry, that product wasn't found, either rescan the barcode or
+					enter
+					product into <a style="color:red;font-size:large" href="#####"> here!</a></label>
+				{% elif error==1 %}
+				<label class="normal" style="color:red;font-size:large">Please upload an image to be scanned.</label>
+				{% elif error==3 %}
+				<label class="normal" style="color:red;font-size:large">Sorry, we couldn't find the barcode in that
+					image.</label>
+				{% endif %}
+			</div>
+		</div>
+
+		{% include 'footer.html' %}
+
+	</div>
+</body>
+
+</html>

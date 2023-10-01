@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="#" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Sitemap</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='sitemap.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="parent">
+      {% include 'navigation.html' %}
+      <div class="main">
+        <h1>Sitemap</h1>
+        <ul>
+          <li><a href="index">Home</a></li>
+          <li><a href="add_product">Add Product</a></li>
+          <li><a href="Barcode">Scan Barcode</a></li>
+          <li><a href="FAQ">FAQ</a></li>
+          <li><a href="Search">Search</a></li>
+          {% if current_user.is_authenticated %}
+          <li><a href="Profile">Profile</a></li>
+          {% else %}
+          <li><a href="Login">Login</a></li>
+          <li><a href="Register">Register</a></li>
+          {% endif %}
+          <li><a href="references">references</a></li>
+        </ul>
+      </div>
+      {% include 'footer.html' %}
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,239 @@
+.parent{
+  display: grid;
+  background-color: #DCDCDC;
+  font-family: Roboto;
+  height: 200vh;
+  grid-gap: 0.2em;
+  grid-template-columns: 0.5fr 1.5fr 1.5fr 1.5fr 0.5fr;
+  grid-template-rows: 0.3fr 3fr 3fr 1.0fr;
+  grid-template-areas: "nav nav nav nav nav"
+                       ". product_card product_card product_card ."
+                       ". . buttons Confirmation ."
+                       "footer footer footer footer footer";
+}
+
+nav{
+  display: grid;
+  font-size: 27;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  grid-area: nav;
+  margin-top: -10px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;
+}
+
+.NavLink{
+  text-decoration: none;
+  text-align: center;
+  font-weight: 300;
+  color: black;
+  height: 90px;
+  line-height: 90px;
+  transition: all 0.2s;
+}
+
+.NavLink:hover{
+  background-color: #1B1B1B;
+  color: white;
+}
+
+
+
+.product_card {
+    display: grid;
+    position: relative;
+    background-color: #fff;
+    width: 750px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 20px #a7a6a6;
+    z-index: 2;
+    animation: anima 4s ease 1s;
+    animation-fill-mode: forwards;
+    grid-area: product_card;
+}
+    
+
+.table{
+    position: relative;
+    font-size: 30px;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 2;
+}
+
+.Confirmation{
+  display: grid;
+  width: 230px;
+  height: 190px;
+  margin-top: 100px;
+  margin-right: 150px;
+  grid-area: Confirmation;
+}
+
+#apple{
+    width: 230px;
+    height: 200px;
+}
+
+td{
+    padding: 20px;
+}
+
+p {
+  font-family: Helvetica, sans-serif;
+  font-weight: bolder;
+  font-size: 2em;
+  color: #000;
+  
+}
+
+.buttons{
+  align-items: center;
+  display: grid;
+  justify-content: center;
+  text-align: center;
+  width: 450px;
+  background-color: #DCDCDC;
+  grid-area: buttons;
+}
+
+.btn-hover {
+    width: 200px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 10px;
+    height: 65px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 30px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.btn-hover.color-1 {
+    background-image: linear-gradient(to right, #25aae1, #40e495, #30dd8a, #2bb673);
+    box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
+}
+
+footer{
+  display: flex;
+  justify-content: flex-start;
+  background-color: #282828;
+  margin-top: 2em;
+  grid-area: footer;
+  color: white;
+}
+
+footer>img{
+  width: 11vw;
+  height: 23vh;
+}
+
+.footertext{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footertext>a{
+  color: white;
+}
+
+@media only screen and (max-width: 1000px){
+  .parent{
+    display: grid;
+    background-color: #DCDCDC;
+    font-family: Roboto;
+    height: 90vh;
+    grid-gap: 0.2em;
+    grid-template-columns: 0.5fr 2.5fr 1.5fr 1.5fr 0.5fr;
+    grid-template-rows: 0.3fr 1.5fr 1fr 1.0fr;
+    grid-template-areas: "nav nav nav nav nav"
+                         ". product_card product_card product_card ."
+                         ". . buttons Confirmation ."
+                         "footer footer footer footer footer";
+  }
+
+  p {
+    font-family: Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 2em;
+    color: #000;
+    margin-left: 300px;
+  }
+
+  nav{
+    display: grid;
+    font-size: 20;
+    grid-template-columns: repeat(6, 1.0fr);
+    background-color: white;
+    grid-area: nav;
+  }
+
+  .NavLink{
+    text-decoration: none;
+    text-align: center;
+    font-weight: 350;
+    color: black;
+    height: 200px;
+    line-height: 180px;
+    transition: all 0.2s;
+  }
+
+  .btn-hover {
+    width: 200px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #fff;
+    cursor: pointer;
+    margin: 100px;
+    height: 65px;
+    text-align:center;
+    border: none;
+    background-size: 300% 100%;
+
+    border-radius: 30px;
+    -moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+  }
+
+  .Confirmation{
+    display: grid;
+    width: 230px;
+    height: 190px;
+    margin-top: 160px;
+    margin-right: 150px;
+    grid-area: Confirmation;
+  }
+  
+}

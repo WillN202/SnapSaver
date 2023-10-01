@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='master.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='productCat.css') }}">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="{{ url_for('static', filename='favicon.ico') }}" rel="shortcut icon">
+    <title>Product Categories</title>
+</head>
+
+<body>
+    <div class="parent">
+        <nav>
+            <img src="{{ url_for('static', filename='SnapSaver (No Background) Logo.png') }}" alt="SnapSaver Logo"
+                style="width:10vh; height:10vh;">
+            <a class=NavLink style="display:block" href="/">Home</a>
+            <a class=NavLink style="display:block" href=#>Find Product</a>
+            <a class=NavLink style="display:block" href="Barcode">Enter Barcode</a>
+            <a class=NavLink style="display:block" href="FAQ">About Y11</a>
+            {% if current_user.is_authenticated %}
+            <a class=NavLink style="display:block" href="Login">Login</a>
+            {% else %}
+            <a class=NavLink style="display:block" href="Profile">Profile</a>
+            {% endif %}
+        </nav>
+
+
+        <div class="header">
+            <div class="text">
+                <h1 class="header_text">Product Categories</h1>
+            </div>
+        </div>
+
+        <div class="Produce">
+            <a href="productlist?category=DEC">
+                <img src="{{ url_for('static', filename='chilled.jpg') }}" alt="dairy eggs and chilled">
+                <div class="overlay">
+                    <div class="text">Dairy, Eggs & Chilled</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="Meat">
+            <a href="productlist?category=meat">
+                <img src="{{ url_for('static', filename='meat.png') }}" alt="meat & fish">
+                <div class="overlay">
+                    <div class="text">Meat & Fish</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="Sauces">
+            <a href="productlist?category=frozen">
+                <img src="{{ url_for('static', filename='Frozen.jpg') }}" alt="frozen">
+                <div class="overlay">
+                    <div class="text">Frozen</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="Beverages">
+            <a href="productlist?category=beverage">
+                <img src="{{ url_for('static', filename='beverage.jpg') }}" alt="beverages & alcohol">
+                <div class="overlay">
+                    <div class="text">Beverages & Alcohol</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="Cupboard">
+            <a href="productlist?category=Bakery">
+                <img src="{{ url_for('static', filename='food cupboard.jpg') }}" alt="food cupboard">
+                <div class="overlay">
+                    <div class="text">Food Cupboard</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="Bakery">
+            <a href="productlist?category=Bakery">
+                <img src="{{ url_for('static', filename='Bakery.jpg') }}" alt="bakery">
+                <div class="overlay">
+                    <div class="text">Bakery</div>
+                </div>
+            </a>
+        </div>
+
+
+        <footer>
+            Footer
+        </footer>
+
+    </div>
+
+
+</body>
+
+</html>

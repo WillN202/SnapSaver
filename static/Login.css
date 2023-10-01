@@ -1,0 +1,312 @@
+html {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+
+.parent{
+  display: grid;
+  background-color: #DCDCDC;
+  font-family: Roboto;
+  height: 100vh;
+  grid-gap: 0.2em;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+  grid-template-rows: 0.01fr 2fr 1fr 1fr;
+  grid-template-areas: "nav nav nav nav nav"
+                       ". . group1 group1 ."
+                       ". link link link ."
+                       "footer footer footer footer footer";
+}
+
+nav{
+  display: grid;
+  font-size: 27;
+  grid-template-columns: repeat(6, 1fr);
+  background-color: white;
+  grid-area: nav;
+  margin-top: -10px;
+  position: fixed; /* Set the navbar to fixed position */
+  top: 0; /* Position the navbar at the top of the page */
+  width: 100%; /* Full width */
+  z-index: 9999;
+}
+
+.NavLink{
+  text-decoration: none;
+  text-align: center;
+  font-weight: 300;
+  color: black;
+  height: 100px;
+  line-height: 100px;
+  transition: all 0.2s;
+}
+
+.NavLink:hover{
+  background-color: #1B1B1B;
+  color: white;
+}
+
+#whole {
+  margin-top: 150px;
+}
+
+
+.link {
+  text-align: center;
+  position: relative;
+  align-items: center;
+  display: grid;
+  margin-left: 400px;
+  margin-bottom: 100px;
+  grid-area: link;
+  background-color: #DCDCDC;
+  width: 500px;
+}
+
+.text{
+  white-space: nowrap;
+  color: rgb(85, 79, 79);
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}
+
+
+.group1        { 
+  position:relative;
+  align-items: center;
+  display: grid;
+  grid-area: group1;
+  margin-top:35px;
+  margin-bottom:25px;
+  margin-right: 150px;
+  background-color: #DCDCDC;
+}
+
+.normal {
+  width: 100%;
+}
+
+.normal1 {
+  width: 100%;
+}
+
+input         {
+  font-size:30px;
+  padding:10px 10px 10px 10px;
+  text-align: center;
+  display:block;
+  width:350px;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus     { outline:none; }
+
+/* LABEL ======================================= */
+label          {
+  color:#999; 
+  font-size:30px;
+  font-weight:normal;
+  position:relative;
+  bottom: 50px;
+  pointer-events:none;
+  left:10px;
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label    {
+  bottom: 20px;
+  font-size:14px;
+  color:#5264AE;
+}
+
+/* BOTTOM BARS ================================= */
+.bar  { position:absolute; display:block; width:370px; }
+.bar:before, .bar:after   {
+  content:'';
+  height:2px; 
+  width:0; 
+  position:absolute;
+  background:#5264AE; 
+  transition:0.2s ease all; 
+  -moz-transition:0.2s ease all; 
+  -webkit-transition:0.2s ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%; 
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+
+/* HIGHLIGHTER ================================== */
+.highlight {
+  position:absolute;
+  height: 40px; 
+  width: 50px;
+  pointer-events:none;
+  opacity:0.5;
+}
+
+/* active state */
+input:focus ~ .highlight {
+  -webkit-animation:inputHighlighter 0.3s ease;
+  -moz-animation:inputHighlighter 0.3s ease;
+  animation:inputHighlighter 0.3s ease;
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@-moz-keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+@keyframes inputHighlighter {
+  from { background:#5264AE; }
+  to  { width:0; background:transparent; }
+}
+
+.button{
+  width: 200px;
+  height: 80px;
+  font-size:1.5em;
+  font-weight:200;
+  background:#fff;
+  border:none;
+  transition:all .3s ease-out; 
+  box-shadow:inset 0 -8px 0 0 rgba(0,0,0,.2),
+    1px 1px 0 0 #d98e20,
+    2px 2px 0 0 #d98e20,
+    3px 3px 0 0 #d98e20,
+    4px 4px 0 0 #d98e20,
+    5px 5px 0 0 #d98e20,
+    6px 6px 0 0 #d98e20,
+    7px 7px 0 0 #d98e20,
+    8px 8px 0 0 #d98e20,
+    9px 9px 0 0 #d98e20,
+    10px 10px 0 0 #d98e20,
+    11px 11px 0 0 #d98e20,
+    12px 12px 0 0 #d98e20;
+}
+
+.button:hover{
+  color:#4D4DFF;
+}
+
+.button:active{
+  color:#222;
+  box-shadow:inset 0 -4px 0 0 rgba(0,0,0,.2),
+    1px 1px 0 0 #d98e20,
+    2px 2px 0 0 #d98e20,
+    3px 3px 0 0 #d98e20,
+    4px 4px 0 0 #d98e20,
+    5px 5px 0 0 #d98e20;
+}
+
+footer{
+  display: flex;
+  justify-content: flex-start;
+  background-color: #282828;
+  margin-top: 2em;
+  grid-area: footer;
+  color: white;
+}
+
+footer>img{
+  width: 11vw;
+  height: 23vh;
+}
+
+.footertext{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footertext>a{
+  color: white;
+}
+
+@media only screen and (max-width: 1000px){
+  .parent{
+    display: grid;
+    background-color: #DCDCDC;
+    font-family: Roboto;
+    height: 85vh;
+    grid-gap: 0.2em;
+    grid-template-columns: 0.5fr 1fr 1fr 1fr 0.5fr;
+    grid-template-rows: 0.3fr 1fr 2.5fr 1fr 1fr;
+    grid-template-areas: "nav nav nav nav nav"
+                         ". p p p ."
+                         ". . group1 . ."
+                         ". . link . ."
+                         "footer footer footer footer footer";
+  }
+
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .group1        { 
+    position:relative;
+    align-items: center;
+    display: grid;
+    grid-area: group1;
+    margin-bottom:25px;
+    margin-left: 250px;
+  }
+
+  nav{
+    display: grid;
+    font-size: 27;
+    height: 200px;
+    grid-template-columns: repeat(6, 0.7fr);
+    background-color: white;
+    grid-area: nav;
+  }
+  
+  .NavLink{
+    text-decoration: none;
+    text-align: center;
+    font-weight: 300;
+    color: black;
+    height: 190px;
+    line-height: 190px;
+    transition: all 0.2s;
+  }
+
+  .link {
+    text-align: center;
+    align-items: center;
+    display: grid;
+    margin-left: 250px;
+    margin-bottom: 300px;
+    grid-area: link;
+    background-color: #DCDCDC;
+    width: 400px;
+  }
+
+  .normal1 {
+    width: 100%;
+    margin-left: 20px;
+  }
+
+}

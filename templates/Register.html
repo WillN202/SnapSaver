@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Sign Up</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='Register.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="parent">
+		{% include 'navigation.html' %}
+
+
+		<form method="POST">
+			<div class="group">
+				{% if err %}
+				{{ err }}
+				{% endif %}
+			</div>
+			<div class="group">
+				<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+				<input type="text" name="username" required>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>Username</label>
+			</div>
+			<div class="group">
+				<input type="text" name="email" required>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>E-mail Address</label>
+			</div>
+
+			<div class="group">
+				<input type="password" name="password1" required>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>Password</label>
+			</div>
+
+			<div class="group">
+				<input type="password" name="password2" required>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>Re-enter Password</label>
+			</div>
+
+			<div class="group">
+				<input type="text" name="postcode" required>
+				<span class="highlight"></span>
+				<span class="bar"></span>
+				<label>Home Postcode</label>
+			</div>
+			<input class="button" type="submit" value="Register!">
+		</form>
+
+		{% include 'footer.html' %}
+
+
+
+</body>
+
+</html>

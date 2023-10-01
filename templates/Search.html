@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search for Products</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='productpage.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='BestDeal_Pre.css') }}">
+    <link rel="stylesheet" href="../static/productpage.css">
+    <link rel="stylesheet" href="../static/BestDeal_Pre.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <!-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['corechart'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Date', 'Price'],
+                ['00/00/00', 1000],
+                ['00/00/00', 1170],
+                ['00/00/00', 660],
+            ]);
+
+            var options = {
+                title: 'Price History',
+                hAxis: { title: 'Time', titleTextStyle: { color: '#333' } },
+                vAxis: { minValue: 0},
+                width: 400
+            };
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            var chart4 = new google.visualization.AreaChart(document.getElementById('chart_div4'));
+
+            var chart = new google.visualization.AreaChart(document.getElementById('chart_div'));
+            var chart4 = new google.visualization.AreaChart(document.getElementById('chart_div4'));
+
+            chart.draw(data, options);
+            chart4.draw(data, options);
+
+
+        }
+
+    </script> -->
+
+</head>
+
+<body>
+    <!-- <div id='nav'>
+        <a href="####" id="Back">Back to home page</a>
+    </div> -->
+    <div class="parent">
+        {% include 'navigation.html' %}
+    </div>
+
+    <div id="search_title">
+        {% if err %}
+        <p id="prompt">{{ err }}</p>
+        {% endif %}
+        <div id="input">
+            <form>
+                <input type="text" id="user_input" name="term">
+                <input type="submit" id="search" value="Search">
+                <p id="button_all">
+                    <span class="radio_span">
+                        <input type="radio" id="vegetable" name="category" value="cupboard" class="radio_button">
+                        <label class="radio_label" for="vegetable">Food Cupboard</label>
+                    </span>
+                    <span class="radio_span">
+                        <input type="radio" id="meat" name="category" value="meatfish" class="radio_button">
+                        <label class="radio_label" for="meat">Meat & Fish</label>
+                    </span>
+                    <span class="radio_span">
+                        <input type="radio" id="dairy" name="category" value="dec" class="radio_button">
+                        <label class="radio_label" for="vegetable">Dairy, eggs & chilled</label>
+                    </span>
+                    <span class="radio_span">
+                        <input type="radio" id="Bakery" name="category" value="bakery" class="radio_button">
+                        <label class="radio_label" for="vegetable">Bakery</label>
+                    </span>
+                    <span class="radio_span">
+                        <input type="radio" id="Frozen" name="category" value="frozen" class="radio_button">
+                        <label class="radio_label" for="vegetable">Frozen</label>
+                    </span>
+                    <span class="radio_span">
+                        <input type="radio" id="Alcohol" name="category" value="beverage" class="radio_button">
+                        <label class="radio_label" for="vegetable">Beverage & Alcohol</label>
+                    </span>
+                </p>
+            </form>
+        </div>
+    </div>
+
+
+    <p class="title"></p>
+    <!-- Best Deal part -->
+    <div class="overall">
+        <table class="Whole">
+            <tbody>
+                {% for item in products %}
+                <tr>
+                    <td>
+                        <div class="product">
+                            <div class="product_card">
+                                <table class="table">
+                                    <tr>
+                                        <th>Name:</th>
+                                        <td>{{ item.name }}</td>
+                                        <td></td>
+                                        <td><img src="{{ url_for('static', filename=item.imglocation) }}" id="apple">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Current Price: </th>
+                                        {% if item.Lidl %}
+                                        <td>Lidl</td>
+                                        {% endif %}
+                                        {% if item.Tesco %}
+                                        <td>Tesco</td>
+                                        {% endif %}
+                                        {% if item.Morrison %}
+                                        <td>Morrisons</td>
+                                        {% endif %}
+                                        {% if item.Sainsbury %}
+                                        <td>Sainsbury's</td>
+                                        {% endif %}
+                                        {% if item.Aldi %}
+                                        <td>Aldi</td>
+                                        {% endif %}
+                                        {% if item.Asda %}
+                                        <td>Asda</td>
+                                        {% endif %}
+
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        {% if item.Lidl %}
+                                        <td>{{ item.Lidl }}</td>
+                                        {% endif %}
+                                        {% if item.Tesco %}
+                                        <td>{{ item.Tesco }}</td>
+                                        {% endif %}
+                                        {% if item.Morrison %}
+                                        <td>{{ item.Morrison }}</td>
+                                        {% endif %}
+                                        {% if item.Sainsbury %}
+                                        <td>{{ item.Sainsbury }}</td>
+                                        {% endif %}
+                                        {% if item.Aldi %}
+                                        <td>{{ item.Aldi }}</td>
+                                        {% endif %}
+                                        {% if item.Asda %}
+                                        <td>{{ item.Asda }}</td>
+                                        {% endif %}
+                                    </tr>
+                                </table>
+                                <form class="" action="index.html" method="post">
+                                    <select name="Select List">
+                                        <option value="list1">List1</option>
+                                    </select>
+                                    <input type="submit" name="addToList" value="Add to list">
+                                </form>
+                            </div>
+                        </div>
+    </div>
+    <div class="appear">
+    </div>
+    </div>
+    </td>
+
+
+    </tr>
+    {% endfor %}
+
+    <!-- <tr>
+        <td>
+            <div class="product">
+                <div class="product_card">
+                    <table class="table">
+                        <tr>
+                            <th>Name:</th>
+                            <td>Apple</td>
+                            <td></td>
+                            <td><img src="../static/apple.jpg" id="apple"></td>
+                        </tr>
+                        <tr>
+                            <th>Current Price: </th>
+                            <td>Lidl</td>
+                            <td>Tesco</td>
+                            <td>Morrisons</td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>$</td>
+                            <td>$</td>
+                            <td>$</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="appear">
+                 <p class="chart">here comes the price line chart</p> -->
+    <!-- <div id="chart_div4" class="chart"></div>
+
+            </div>
+        </td> -->
+
+
+
+    </tr>
+    </tbody>
+    </table>
+    </div>
+
+    <!-- Best deal part end -->
+
+    <!-- Best deal part end -->
+
+    <!-- <p id="Pre"></p>
+    Best Deal part
+    <div id="overall">
+        <table class="Whole">
+            <tbody>
+                <tr>
+                    <td>
+                        <div class="product">
+                            <div class="product_card">
+                                <table class="table">
+                                    <tr>
+                                        <th>Name:</th>
+                                        <td>Apple</td>
+                                        <td></td>
+                                        <td><img src="../static/apple.jpg" id="apple"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Current Price: </th>
+                                        <td>Lidl</td>
+                                        <td>Tesco</td>
+                                        <td>Morrisons</td>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <td>$</td>
+                                        <td>$</td>
+                                        <td>$</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="appear">
+                        <p class="chart"></p>
+                    </div>
+                </div>
+            </td>
+
+
+        </tr>
+
+        <tr>
+            <td>
+                <div class="product">
+                    <div class="product_card">
+                        <table class="table">
+                            <tr>
+                                <th>Name:</th>
+                                <td>Apple</td>
+                                <td></td>
+                                <td><img src="../static/apple.jpg" id="apple"></td>
+                            </tr>
+                            <tr>
+                                <th>Current Price: </th>
+                                <td>Lidl</td>
+                                <td>Tesco</td>
+                                <td>Morrisons</td>
+                            </tr>
+                            <tr>
+                                <th></th>
+                                <td>$</td>
+                                <td>$</td>
+                                <td>$</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="appear">
+                    <p class="chart"></p>
+                </div>
+            </div>
+            <div class="appear">
+                <p class="chart"></p>
+            </div>
+        </td>
+
+    </tr>
+    </tbody>
+    </table> -->
+
+    {% include 'footer.html' %}
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Shopping List</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='shoppinglist.css') }}">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <div class="parent">
+    {% include 'navigation.html' %}
+
+    <div class="title">
+      <div class="overlay">
+        <div class="text">Shopping Lists</div>
+      </div>
+    </div>
+    <!-- Yes, I know client side storage exists, I just CBA to use it ok, I wrote this in 2 hours -->
+    <div class="selectList">
+      <form class="selectList" method="GET" id="changelist">
+        <select name="shoppingList" id="shoppingList" onchange="document.getElementById('changelist').submit();">
+          <option value="" style="display:None;"></option>
+          {% for shoplist in list %}
+          {% if shoplist[0] == list_info[4] %}
+          <option value="{{ shoplist[0] }}" selected>{{ shoplist[0] }}</option>
+          {% else %}
+          <option value="{{ shoplist[0] }}">{{ shoplist[0] }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+
+      </form>
+    </div>
+
+    <div class="listInfo">
+      <h1>List Information</h1>
+      {% if selected_list %}
+      <p>Creator: {{ list_info[0] }}</p>
+      <p>Shop: {{ list_info[1] }}</p>
+      <p>Total Price: {{ list_info[2] }}</p>
+      <p>Running Price: {{ list_info[3] }}</p>
+      {% endif %}
+      {% if err %}
+      <p style="color: red">{{ err }}</p>
+      {% endif %}
+    </div>
+
+    <div class="list">
+      <form class="" method="POST">
+        {% for item in list_items %}
+        {% if item[3] %}
+        <input type="checkbox" id="item1" name="item1" value="{{ item[0] }}">
+        <label for="{{item[0]}}" style="text-decoration: line-through;"> {{ item[2] }} {{ item[0] }} ({{ item[1] }})
+        </label><br>
+        {% else %}
+        <input type="checkbox" id="item1" name="item1" value="item1">
+        <label for="{{item[0]}}"> {{ item[2] }} {{ item[0] }} ({{ item[1] }}) </label><br>
+        {% endif %}
+        <input type="hidden" name="{{item[0] +  'ean'}}" value=" {{ item[4] }}">
+        {% endfor %}
+        <input type="hidden" name="name" value="{{ list_name }}">
+        {% if selected_list %}
+
+        <div class="listbuttons">
+          <input type="submit" name="remove" value="Remove Item" formaction="/delitems">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="list_name" value="{{ list_info[4] }}">
+          <input type="submit" name="delete" value="Delete List" formaction="/delshoppinglist">
+        </div>
+      </form>
+      {% endif %}
+    </div>
+
+    <div class="scanList">
+      {% if selected_list %}
+      <input type="button" name="" value="Scan Barcode" class="btn effect04"
+        onclick="document.getElementById('camera').click();">
+
+
+      <form method="POST" action="/barcodelistprocess" enctype="multipart/form-data">
+        <input type="hidden" name="list_name" value="{{ list_name }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <input type="file" name="image" accept="image/*" capture="environment" id="camera" style="display:none;">
+        <input id="pic" type="submit" value="Confirm" class="btn effect04" data-sm-link-text="GO!!"><label
+          for="pic"></label>
+      </form>
+      {% endif %}
+    </div>
+
+    <div class="editList">
+      <h1>List Options</h1>
+      {% if selected_list %}
+      <form class="" action="/makeshareable" method="post">
+        <input type="hidden" name="list_name" value="{{ list_name }}">
+        <input class="normal" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        {% if list_info[5] %}
+        <input type="checkbox" id="share" name="share" value="share" onchange="this.form.submit()" checked>
+        {% else %}
+        <input type="checkbox" id="share" name="share" value="share" onchange="this.form.submit()">
+        {% endif %}
+        <label for="share">Make List Shareable</label><br>
+
+      </form>
+
+      {% endif %}
+      <div class="listbuttons">
+        <form method="POST" action="/addshoppinglist">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <label for="text">Shoppping list name: </label>
+          <input type="text" name="listname" required>
+          <label for="store">Store</label>
+          <select name="store">
+            {% for store in store_list %}
+            <option value="" style="display:none"></option>
+            <option value="{{ store[0] }}">{{ store[0] }}</option>
+            {% endfor %}
+          </select>
+          <input type="submit" name="newlist" value="Create new list" formaction="/addshoppinglist">
+        </form>
+      </div>
+    </div>
+
+
+
+    {% include 'footer.html' %}
+  </div>
+</body>
+
+</html>

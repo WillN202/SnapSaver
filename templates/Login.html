@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+	<title>Login</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='Login.css') }}">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+	<div class="parent">
+		{% include 'navigation.html' %}
+		<!-- <div id = "whole"> -->
+		<div class="group1">
+			<form method="POST">
+				{% if err %}
+				<label>{{ err }}</label>
+				{% endif %}
+
+				<input class="normal" type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+				<input type="text" name="email" required>
+				<span class="bar"></span>
+				<label>E-Mail</label>
+
+
+				<input type="password" name="password" required>
+				<span class="bar"></span>
+				<label>Password</label>
+
+				<input class="normal" type="checkbox" name="remember">
+				<label class="normal1">Remember me?</label>
+
+				<input class="button" type="submit" value="LOGIN">
+
+
+			</form>
+		</div>
+		<div class="link">
+			<a class="text" href="/Register">Don't have an Account? Sigh up here.</a>
+		</div>
+
+		{% include 'footer.html' %}
+
+	</div>
+</body>
+
+</html>

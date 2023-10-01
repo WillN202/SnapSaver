@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../static/master.css">
+    <link rel="stylesheet" href="../static/FAQ.css"> -->
+    <link href="{{ url_for('static', filename='master.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='FAQ.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <title>Frequently Asked Questions</title>
+
+</head>
+
+<body>
+
+    <div class="parent">
+
+        {% include 'navigation.html' %}
+
+        <div class="header">
+            <div class="text" id="header_text">
+                <h1 class="header_text">About Us</h1>
+            </div>
+        </div>
+
+        <div class="paragraph">
+            <div class="text">
+                <p class="paragraph_text">
+                    SnapSaver is an application designed for students or people who are living on a budget. This app
+                    helps with looking at specific product and comparing prices at different grocery stores to provide
+                    you the lowest price.
+                    With crowdsourced data from different customer, we can help each other at finding which store has
+                    the lowest prices or ongoing promotions.
+                </p>
+            </div>
+        </div>
+
+        <div class="header2">
+            <div class="text" id="header_text">
+                <h1 class="header_text">Contact Us</h1>
+            </div>
+        </div>
+
+        <div class="list1">
+            <div class="text">
+                <dl class="test">
+                    <dd class=List><img src="{{ url_for('static', filename='email.png') }}" width="40"
+                            height="35">hello@y11project.ddns.net</dd>
+                    <dd class=List><img src="{{ url_for('static', filename='phone.png') }}" width="40" height="35">0161
+                        496 1332</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="header3">
+            <div class="text" id="header_text">
+                <h1 class="header_text">Frequently Asked Questions</h1>
+            </div>
+        </div>
+
+        <div class="q1">
+            <div class="text">
+                <dl>
+                    <dd class="question"><img src="{{ url_for('static', filename='Q.png') }}" height="40px">How are
+                        prices being updated?</dd>
+                    <dd class="answer"><img src="{{ url_for('static', filename='A.png') }}" height="40px">With the help
+                        of users input, the system will update the result
+                        according to the inputs.</dd>
+                </dl>
+            </div>
+        </div>
+
+        <div class="q2">
+            <div class="text">
+                <dl>
+                    <dd class="question"><img src="{{ url_for('static', filename='Q.png') }}" height="40px">What happens
+                        if prices are entered incorrectly?</dd>
+                    <dd class="answer"><img src="{{ url_for('static', filename='A.png') }}" height="40px">There will be
+                        methods in place to prevent fluctuation of prices like 10 pounds for an apple to happen.</dd>
+                </dl>
+            </div>
+        </div>
+
+        {% include 'footer.html' %}
+    </div>
+</body>
+
+</html>
